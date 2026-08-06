@@ -1,0 +1,941 @@
+.contests-page {
+    padding: 10px;
+    color: white;
+}
+body {
+    overflow: visible;
+}
+.premium-modal {
+    margin: auto;
+}
+/* HEADER */
+.contests-header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-style: normal;
+    text-align: center;
+}
+
+.contests-header p {
+    color: #9ca3af;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* CARD */
+.contest-card {
+    position: relative;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 1200px;
+    overflow: hidden;
+    /* 🔥 LIGHTER gradient + image visible */
+    background: linear-gradient(135deg, rgba(58, 13, 0, 0.6), rgba(122, 46, 0, 0.6)), url("/images/contestimg.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    border: 1px solid rgba(255, 115, 0, 0.3);
+}
+
+.contest-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15);
+    /* halka dark overlay */
+    border-radius: 20px;
+}
+
+.contest-card * {
+    position: relative;
+    z-index: 2;
+    filter: brightness(1.1) contrast(1.1);
+}
+
+/* BADGE */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ff6a00;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* TITLE */
+.contest-card h2 {
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* REWARD */
+.reward {
+    font-size: 16px;
+    color: #e5e7eb;
+    margin-bottom: 20px;
+}
+
+/* INFO */
+.contest-info {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.contest-info span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #f3f4f6;
+}
+
+/* BUTTON */
+.submit-btn {
+    background: #e5e7eb;
+    color: #ff6a00;
+    border: 5px solid rgb(255, 210, 155);
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #ffffff;
+    transform: scale(1.05);
+}
+
+.winner {
+    font-size: 18px;
+    color: rgb(255, 206, 143);
+}
+.contests-container {
+    background: linear-gradient(180deg, rgba(19, 1, 47, 0.6), rgba(0, 0, 0, 0.8));
+
+    border: 1px solid rgba(255, 115, 0, 0.15);
+    border-radius: 20px;
+
+    padding: 30px;
+    max-width: 1500px;
+
+    margin-left: -20px;
+    margin-top: -20px;
+    /* center */
+
+    backdrop-filter: blur(10px);
+    /* 🔥 premium glass effect */
+}
+.contests-header {
+    margin-bottom: 20px;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 🔥 STRONG BACKGROUND COVER */
+    background: rgba(0, 0, 0, 0.85);
+
+    backdrop-filter: blur(12px);
+    /* 🔥 reel jaisa feel */
+
+    z-index: 999999;
+}
+.modal-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(circle at center,
+            rgba(255, 115, 0, 0.15),
+            rgba(0, 0, 0, 0.9));
+
+    z-index: 1;
+}
+
+/* MODAL */
+.premium-modal {
+    width: 420px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 20px;
+
+    background: rgba(20, 20, 30, 0.6);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 115, 0, 0.3);
+
+    box-shadow: 0 0 40px rgba(255, 115, 0, 0.15);
+
+    animation: scaleUp 0.4s ease;
+}
+
+@keyframes scaleUp {
+    from {
+        scale: 0.8;   /* 🔥 FIXED (no transform conflict) */
+        opacity: 0;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.premium-modal h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* FORM */
+.premium-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* INPUT GROUP */
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group svg {
+    position: absolute;
+    left: 12px;
+    color: #f6ff00;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 14px 14px 14px 40px;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+}
+
+/* FLOATING LABEL */
+.input-group label {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+/* ACTIVE LABEL */
+.input-group input:focus+label,
+.input-group input:valid+label,
+.input-group select:focus+label,
+.input-group select:valid+label {
+    top: -8px;
+    font-size: 12px;
+    color: #ff6a00;
+}
+
+/* FILE UPLOAD */
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px dashed #555;
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.file-upload input {
+    display: none;
+}
+
+/* SUBMIT BUTTON */
+.premium-submit {
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #ff6a00, #ff3c3c);
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.premium-submit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 115, 0, 0.5);
+}
+.input-group select {
+    width: 100%;
+    padding: 14px 14px 14px 40px;
+
+    background: transparent;
+    /* 🔥 SAME AS INPUT */
+    color: white;
+
+    border: 1px solid #333;
+    border-radius: 10px;
+
+    outline: none;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    font-size: 14px;
+    cursor: pointer;
+}
+.input-group::after {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: #ff6a00;
+    /* 🔥 match theme */
+    pointer-events: none;
+    font-size: 12px;
+}
+.input-group select option {
+    background: #111;
+    color: white;
+}
+.input-group select:valid+label {
+    top: -8px;
+    font-size: 12px;
+    color: #ff6a00;
+}
+.input-group select:focus {
+    border-color: #ff6a00;
+    box-shadow: 0 0 10px rgba(255, 115, 0, 0.4);
+}
+
+.input-group > svg {
+    position: absolute;
+    left: 12px;
+}
+
+.winners-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: linear-gradient(135deg, #020617, #020c1b);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 115, 0, 0.2);
+}
+
+.winner-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.winner-left {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.meta {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.watch-btn {
+    background: linear-gradient(135deg, #ff6a00, #ff8c2a);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+/* FULL SCREEN MODAL */
+.video-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    background: #000;
+    z-index: 9999;
+}
+
+/* 🔥 BLURRED BACKGROUND VIDEO */
+.video-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    filter: blur(40px) brightness(0.4);
+    transform: scale(1.2);
+}
+
+/* CENTER CONTAINER */
+.video-container {
+    position: relative;
+    z-index: 2;
+
+    height: 90vh;
+    aspect-ratio: 9/16;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    box-shadow:
+        0 0 40px rgba(255, 115, 0, 0.3),
+        0 0 100px rgba(255, 115, 0, 0.1);
+}
+
+/* MAIN VIDEO */
+.main-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.video-modal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.8));
+    z-index: 1;
+}
+/* MAIN CONTAINER */
+
+/* HEADER */
+.winners-header {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* CARD */
+.winner-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px;
+    margin-bottom: 15px;
+
+    border-radius: 16px;
+
+    /* 🔥 NEW PREMIUM GLASS BG */
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(2, 6, 23, 0.7));
+
+    border: 1px solid rgba(255, 115, 0, 0.15);
+
+    backdrop-filter: blur(10px);
+
+    transition: all 0.3s ease;
+}
+
+.winner-card:hover {
+    transform: translateY(-4px);
+
+    background: linear-gradient(135deg, rgba(0, 32, 82, 0.8), rgba(2, 6, 23, 0.8));
+
+    box-shadow: 0 0 25px rgba(255, 115, 0, 0.2);
+}
+.winner-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f9fafb;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.place-badge {
+    margin-left: 10px;
+
+    font-size: 12px;
+    padding: 5px 12px;
+
+    border-radius: 999px;
+
+    background: rgba(255, 115, 0, 0.2);
+    color: #ff6a00;
+
+    white-space: nowrap;
+    /* 🔥 NO LINE BREAK */
+    display: inline-flex;
+    /* 🔥 PERFECT OVAL */
+    align-items: center;
+
+    flex-shrink: 0;
+    /* 🔥 NOT SQUEEZE */
+}
+
+/* LEFT */
+.winner-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* AVATAR */
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 115, 0, 0.5);
+}
+
+/* RANK BADGE */
+.rank-badge {
+    font-size: 28px;
+}
+
+/* PLACE BADGE */
+.place-badge {
+    margin-left: 10px;
+    font-size: 12px;
+    background: rgba(255, 115, 0, 0.2);
+    color: #ff6a00;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+/* META */
+.meta {
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* WATCH BUTTON */
+.watch-btn {
+    background: linear-gradient(135deg, #ff6a00, #ff8c2a);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.watch-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 115, 0, 0.4);
+}
+/* LIKE BUTTON */
+.like-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+/* HEART COLOR */
+.heart-icon {
+    color: #aaa;
+    transition: 0.3s;
+}
+
+/* WHEN CLICKED */
+.like-btn.liked .heart-icon {
+    color: #ff3b5c;
+    animation: pulse 0.4s ease;
+}
+.view-counter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #9ca3af;
+}
+
+/* PULSE ANIMATION */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+.winners-container {
+    margin-top: 40px;
+    padding: 25px;
+    border-radius: 20px;
+
+    background: linear-gradient(135deg, #021b439b, #0f172a);
+
+    border: 1px solid rgba(255, 115, 0, 0.2);
+
+    box-shadow:
+        0 0 30px rgba(255, 115, 0, 0.08),
+        inset 0 0 20px rgba(255, 255, 255, 0.02);
+
+    margin-left: -15px;
+}
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    /* 🔥 higher */
+}
+
+body.modal-open {
+    overflow: hidden;
+    /* 🔥 no scroll */
+    height: 100vh;
+    touch-action: none;
+    /* 🔥 mobile scroll bhi lock */
+}
+.premium-modal {
+    position: relative;
+    z-index: 2;
+}
+/* CLOSE BUTTON */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    z-index: 999;
+    /* 🔥 THIS FIXES IT */
+
+    width: 36px;
+    height: 36px;
+
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-btn svg {
+    font-size: 20px;
+    color: white;
+}
+
+
+/* HOVER EFFECT */
+.close-btn:hover {
+    background: rgba(255, 115, 0, 0.3);
+    transform: scale(1.1);
+}
+
+
+/* 📱 MOBILE FIRST FIX */
+@media (max-width: 768px) {
+
+    /* MAIN CONTAINER */
+    .contests-container {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    /* HEADER */
+    .contests-header h1 {
+        font-size: 26px;
+        margin-top: 18px;
+    }
+
+    .contests-header p {
+        font-size: 14px;
+    }
+
+    /* CONTEST CARD */
+    .contest-card {
+        padding: 20px;
+    }
+
+    .contest-card h2 {
+        font-size: 22px;
+    }
+
+    .contest-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* FORM MODAL */
+    .premium-modal {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .input-group input,
+    .input-group select {
+        font-size: 14px;
+    }
+
+    /* WINNERS */
+    .winner-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .winner-left {
+        width: 100%;
+    }
+
+    .watch-btn {
+        width: 100%;
+    }
+
+    /* META WRAP */
+    .meta {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* VIDEO REEL */
+    .video-container {
+        height: 80vh;
+    }
+}
+
+/* GLOBAL SMOOTH */
+* {
+    scroll-behavior: smooth;
+}
+
+/* BUTTON FEEL */
+button {
+    transition: all 0.25s ease;
+}
+
+/* CARD HOVER */
+.winner-card {
+    transition: all 0.25s ease;
+}
+/* BUTTON PRESS */
+button:active {
+    transform: scale(0.96);
+}
+
+/* INPUT FOCUS GLOW */
+.input-group input:focus,
+.input-group select:focus {
+    transform: scale(1.02);
+}
+
+/* WATCH BTN PREMIUM */
+.watch-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.watch-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.watch-btn:hover::after {
+    opacity: 1;
+}
+/* CLICK FEEDBACK */
+.video-container {
+    transition: 0.3s;
+}
+
+.video-container:hover {
+    transform: scale(1.02);
+}
+
+/* MOBILE VIDEO */
+@media (max-width: 500px) {
+    .video-container {
+        height: 75vh;
+    }
+}
+@media (max-width: 768px) {
+    .place-badge {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+}
+/* 📱 EDGE-TO-EDGE BOXES */
+@media (max-width: 768px) {
+
+    /* outer page gap hatao */
+    .contests-page {
+        padding: 0;
+        /* 🔥 side gap remove */
+    }
+
+    /* TOP BOX */
+    .contests-container {
+        margin-left: 0;
+        /* 🔥 previous negative margin reset */
+        margin-right: 0;
+
+        border-radius: 0;
+        /* 🔥 edge feel */
+        padding: 20px 16px;
+        /* andar ka spacing maintain */
+    }
+
+    /* BOTTOM BOX */
+    .winners-container {
+        margin-left: 0;
+        /* 🔥 reset */
+        margin-right: 0;
+
+        border-radius: 0;
+        /* 🔥 full width feel */
+        padding: 20px 16px;
+        border-radius: 12px;
+        margin: 10 6px;
+    }
+
+    /* CARD INSIDE SAFE */
+    .contest-card {
+        max-width: 100%;
+        border-radius: 12px;
+        margin: 10 6px;
+        
+        /* 🔥 full stretch */
+    }
+    
+}
+@media (max-width: 768px) {
+
+    /* 🔥 LEFT SECTION FULL WIDTH */
+
+
+    /* 🔥 NAME + BADGE CLEAN ALIGN */
+    .winner-card h3 {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        margin-top: 15px;
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    /* 🔥 SONG TEXT */
+    .winner-card p {
+        margin-top: 4px;
+        font-size: 13px;
+        color: #9ca3af;
+    }
+
+    /* 🔥 META CLEAN GRID */
+    .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-left: -70px;
+        margin-top: 12px;
+        font-size: 12px;
+    }
+    .winner-left > div p {
+        text-align: left;
+        margin-left: 0px;
+        padding-left: 0;
+    }
+    .winner-card {
+        position: relative;
+    }
+
+    /* 🔥 BADGE KO TOP RIGHT LE JAO */
+    .place-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+
+        font-size: 11px;
+        padding: 4px 10px;
+
+        z-index: 2;
+    }
+    /* 🔥 EACH META ITEM */
+    .meta span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    /* 🔥 AVATAR + ICON ALIGN */
+    .avatar {
+        flex-shrink: 0;
+        margin-top: -27px;
+        margin-left: -20px;
+    }
+
+    .rank-badge {
+        flex-shrink: 0;
+        margin-top: -100px;
+    }
+
+    /* 🔥 BUTTON FULL WIDTH + GAP */
+    .watch-btn {
+        width: 100%;
+        margin-top: 5px;
+    }
+}
